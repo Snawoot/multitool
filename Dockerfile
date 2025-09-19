@@ -1,6 +1,7 @@
 FROM debian:latest
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt update && apt install -y \
+	tar \
 	tmate \
 	curl \
 	wget \
@@ -26,7 +27,7 @@ RUN apt update && apt install -y \
 	openssh-client \
 	iproute2 \
 	mtr \
-&& rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/* \
+&& curl -sSf https://sshx.io/get | sh
 WORKDIR /root
-ENTRYPOINT ["/usr/bin/tmate"]
-CMD ["-F"]
+CMD ["/usr/local/bin/sshx"]
