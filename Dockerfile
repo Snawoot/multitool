@@ -24,6 +24,8 @@ RUN apt update && apt install -y \
 	tcpdump \
 	xxd \
 	openssh-client \
+	iproute2 \
+	mtr \
 && rm -rf /var/lib/apt/lists/*
 WORKDIR /root
 ENTRYPOINT ["/usr/bin/tmate"]
